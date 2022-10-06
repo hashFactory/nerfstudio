@@ -245,7 +245,7 @@ def run_colmap(
         f"--image_path {image_dir}",
         "--ImageReader.single_camera 1",
         f"--ImageReader.camera_model {camera_model.value}",
-        f"--SiftExtraction.use_gpu {int(gpu)}",
+        f"--SiftExtraction.use_gpu=false",
     ]
     feature_extractor_cmd = " ".join(feature_extractor_cmd)
     if not verbose:
@@ -259,7 +259,7 @@ def run_colmap(
     feature_matcher_cmd = [
         f"colmap {matching_method}_matcher",
         f"--database_path {colmap_dir / 'database.db'}",
-        f"--SiftMatching.use_gpu {int(gpu)}",
+        f"--SiftMatching.use_gpu=false",
     ]
     if matching_method == "vocab_tree":
         vocab_tree_filename = get_vocab_tree()
